@@ -19,6 +19,7 @@ export default class HelloWorld extends React.Component {
              text1:'ToastForAndroid',
              text2:'testAndroidCallbackMethod',
              text3:'textAndroidPromiseMethod',
+             text4:'DeviceEventEmitter',
         }
     }
 
@@ -42,6 +43,9 @@ export default class HelloWorld extends React.Component {
            <TouchableOpacity onPress={this._onPressButton3.bind(this)}>
                  <Text style={styles.hello}>{this.state.text3}</Text>
            </TouchableOpacity>
+           <TouchableOpacity onPress={this._onPressButton4.bind(this)}>
+                 <Text style={styles.hello}>{this.state.text4}</Text>
+           </TouchableOpacity>
           </View>
         )
    }
@@ -62,6 +66,10 @@ export default class HelloWorld extends React.Component {
              }).catch((error)=>{
                  this.setState({text:'error'});
              })
+    }
+
+    _onPressButton4(){
+        NativeModules.ToastForAndroid.sendEvent();
     }
 
 }

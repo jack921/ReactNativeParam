@@ -46,8 +46,12 @@ public class ToastExample extends ReactContextBaseJavaModule{
 
     @ReactMethod
     public void show(int duration){
-//        onScanningResult();
         Toast.makeText(getReactApplicationContext(),"message:"+duration,duration).show();
+    }
+
+    @ReactMethod
+    public void sendEvent(){
+        onScanningResult();
     }
 
     @ReactMethod
@@ -58,6 +62,7 @@ public class ToastExample extends ReactContextBaseJavaModule{
 
     @ReactMethod
     public void textAndroidPromiseMethod(String msg, Promise promise){
+        Toast.makeText(getReactApplicationContext(),msg,Toast.LENGTH_SHORT).show();
         String result="谢汉杰";
         promise.resolve(result);
     }
