@@ -20,14 +20,15 @@ export default class HelloWorld extends React.Component {
              text2:'testAndroidCallbackMethod',
              text3:'textAndroidPromiseMethod',
              text4:'DeviceEventEmitter',
+             text5:'getValue',
         }
     }
 
     componentWillMount() {
         DeviceEventEmitter.addListener('EventName', function  (msg) {
             console.log(msg);
-            let resr=NativeModules.ToastForAndroid.MESSAGE;
-            ToastAndroid.show("DeviceEventEmitter收到消息:" + "\n" + resr, ToastAndroid.SHORT)
+            let rest=NativeModules.ToastForAndroid.MESSAGE;
+            ToastAndroid.show("DeviceEventEmitter收到消息:" + "\n" + rest, ToastAndroid.SHORT)
         });
     }
 
@@ -45,6 +46,9 @@ export default class HelloWorld extends React.Component {
            </TouchableOpacity>
            <TouchableOpacity onPress={this._onPressButton4.bind(this)}>
                  <Text style={styles.hello}>{this.state.text4}</Text>
+           </TouchableOpacity>
+           <TouchableOpacity onPress={this._onPressButton5.bind(this)}>
+                 <Text style={styles.hello}>{this.state.text5}</Text>
            </TouchableOpacity>
           </View>
         )
@@ -70,6 +74,10 @@ export default class HelloWorld extends React.Component {
 
     _onPressButton4(){
         NativeModules.ToastForAndroid.sendEvent();
+    }
+
+    _onPressButton5(){
+         ToastAndroid.show(NativeModules.ToastForAndroid.MESSAGE, ToastAndroid.SHORT)
     }
 
 }

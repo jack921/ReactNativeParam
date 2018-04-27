@@ -9,16 +9,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Administrator on 2018/4/25.
- */
-
 public class ExampleReactNativePackage implements ReactPackage{
+
+    public ToastExample toastExample;
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new ToastExample(reactContext));
+        toastExample=new ToastExample(reactContext);
+        modules.add(toastExample);
         return modules;
     }
 

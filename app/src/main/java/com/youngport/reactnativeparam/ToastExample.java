@@ -16,10 +16,6 @@ import com.facebook.react.modules.core.DeviceEventManagerModule;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Administrator on 2018/4/25.
- */
-
 public class ToastExample extends ReactContextBaseJavaModule{
     private static final String LONG_TIME = "LONG";
     private static final String SHORT_TIME = "SHORT";
@@ -75,6 +71,10 @@ public class ToastExample extends ReactContextBaseJavaModule{
 
     public static void sendEvent(ReactContext reactContext, String eventName, @Nullable WritableMap params) {
         reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
+    }
+
+    public void nativeCallRn(){
+        onScanningResult();
     }
 
     @Override
