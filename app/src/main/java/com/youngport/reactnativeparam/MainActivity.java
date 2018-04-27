@@ -20,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
         helloReact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,HelloReactActivity.class));
+                Intent intent=new Intent(MainActivity.this,HelloReactActivity.class);
+                intent.putExtra("data","HelloJack");
+                startActivity(intent);
             }
         });
         hello_react2.setOnClickListener(new View.OnClickListener() {
@@ -29,6 +31,6 @@ public class MainActivity extends AppCompatActivity {
                 MyApplication.exampleReactNativePackage.toastExample.nativeCallRn();
             }
         });
-
     }
+
 }

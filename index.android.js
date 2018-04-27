@@ -21,6 +21,7 @@ export default class HelloWorld extends React.Component {
              text3:'textAndroidPromiseMethod',
              text4:'DeviceEventEmitter',
              text5:'getValue',
+             data:'no_data',
         }
     }
 
@@ -30,11 +31,15 @@ export default class HelloWorld extends React.Component {
             let rest=NativeModules.ToastForAndroid.MESSAGE;
             ToastAndroid.show("DeviceEventEmitter收到消息:" + "\n" + rest, ToastAndroid.SHORT)
         });
+        NativeModules.ToastForAndroid.getDataFromIntent((result)=>{
+            this.setState({data:result});
+        });
     }
 
    render() {
      return (
           <View style={styles.container}>
+           <Text>{this.state.data}</Text>
            <TouchableOpacity onPress={this._onPressButton.bind(this)}>
                  <Text style={styles.hello}>{this.state.text1}</Text>
            </TouchableOpacity>

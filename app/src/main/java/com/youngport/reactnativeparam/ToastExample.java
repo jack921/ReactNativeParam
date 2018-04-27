@@ -1,6 +1,10 @@
 package com.youngport.reactnativeparam;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.telecom.Call;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.facebook.react.bridge.Arguments;
@@ -23,6 +27,21 @@ public class ToastExample extends ReactContextBaseJavaModule{
 
     public ToastExample(ReactApplicationContext reactContext) {
         super(reactContext);
+    }
+
+    @ReactMethod
+    public void getDataFromIntent(Callback callback){
+        try{
+            Activity currentActivity=getCurrentActivity();
+            String result =currentActivity.getIntent().getStringExtra("data");
+            if(TextUtils.isEmpty(result)){
+                callback.invoke("no_data");
+            }else{
+                callback.invoke(result);
+            }
+        }catch (Exception e){
+            callback.invoke("error");
+        }
     }
 
     @Override
